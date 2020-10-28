@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http:/www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Log in site</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+<nav class="navbar  navbar-light bg-light">
+    <a class="navbar-brand" href="/">sozialnetwork</a>
+</nav>
+
+<br/><br/>
+<h2 class="text-center">Welcome to the sozialnetwork</h2>
+<br/><br/>
+<a role="button" class="btn btn-dark col-sm-3" href="/register">Register here, if you don't have an account</a>
+
+<br/><br/>
+<div class="card">
+    <div class="card-header">
+        Please log in here
+    </div>
+    <div class="card-body">
+        <form method="post" th:action="@{/login}">
+            <div class="form-group row">
+                <label class="col-sm-1 col-form-label">Username</label>
+                <div class="col-sm-2">
+                    <input type="text" name="username" class="form-control" placeholder="My username">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-1 col-form-label">Password</label>
+                <div class="col-sm-2">
+                    <input type="password" name="password" class="form-control" placeholder="Password">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-dark col-sm-3">Sign in</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

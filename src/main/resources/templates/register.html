@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http:/www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration site</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+
+<nav class="navbar  navbar-light bg-light">
+    <a class="navbar-brand" href="/">sozialnetwork</a>
+</nav>
+
+<br/><br/>
+<h1>You are wanted!!!</h1>
+<h5>Register now to be a part of sozialnetwork</h5>
+<br/><br/>
+<div class="card">
+    <form th:action="@{/register}" method="post" th:object="${newuser}">
+        <div class="form-group row"><label class="col-sm-1 col-form-label">username</label> <div class="col-sm-2"><input class="form-control" type="text" th:field="*{username}"/> </div></div>
+            <div class="form-group row"><label class="col-sm-1 col-form-label">email</label> <div class="col-sm-2"><input class="form-control" type="text" th:field="*{email}"/></div> </div>
+            <div class="form-group row"><label class="col-sm-1 col-form-label">password</label> <div class="col-sm-2"><input class="form-control" type="password" th:field="*{password}"/></div> </div>
+                <div class="form-group row"><label class="col-sm-1 col-form-label">full name</label> <div class="col-sm-2"><input class="form-control" type="text" th:field="*{name}"/> </div></div>
+                    <div class="form-group row"><label class="col-sm-1 col-form-label">short about you</label> <div class="col-sm-2"><input class="form-control" type="text" th:field="*{about}"/> </div></div>
+        <button  class="btn btn-dark col-sm-3" type="submit">Register</button>
+        <p>After registration, you will be sent back to login page and prompted to authenticate your login information one more time.</p>
+    </form>
+</div>
+</body>
+</html>

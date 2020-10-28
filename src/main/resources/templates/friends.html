@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Friendlist</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">sozialnetwork</a>
+
+    <div id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/myprofile">My Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/members">Our Community</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/friends">My Friends</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post">
+            <button class="btn btn-outline-secondary my-2 my-sm-0" value="Logout" type="submit">Logout</button>
+        </form>
+    </div>
+</nav>
+<br/><br/>
+
+<div class="card">
+    <div class="card-header">
+        Check out your friends
+    </div>
+    <table class="card-body">
+        <tbody>
+            <tr th:each="friend : ${friends}">
+                <td class="col-sm-1" th:text="${friend.username}"></td>
+                <td class="col-sm-1"><a role="button" class="btn btn-dark" th:href="@{${friend.username}}">Profile</a></td>
+                <td class="col-sm-1"><a role="button" class="btn btn-dark" th:href="@{'/unfriend/'+${friend.id}}">Unfriend</a> </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

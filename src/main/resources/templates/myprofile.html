@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${user.getName()}"></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">sozialnetwork</a>
+
+    <div id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/myprofile">My Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/members">Our Community</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/friends">My Friends</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post">
+            <button class="btn btn-outline-secondary my-2 my-sm-0" value="Logout" type="submit">Logout</button>
+        </form>
+    </div>
+</nav>
+<br/><br/>
+<div class="card">
+    <div class="card-header" th:text="${user.getName()}"></div>
+
+    <table class="card-body"><tbody>
+    <tr><td>Name</td> <td th:text="${user.getName()}"/> </tr>
+    <tr><td>Username</td> <td th:text="${user.getUsername()}"/> </tr>
+    <tr><td>Email</td> <td th:text="${user.getEmail()}"/> </tr>
+    <tr><td>About</td> <td th:text="${user.getAbout()}"/> </tr>
+    </tbody></table>
+</div>
+<br/><br/>
+<table class="card">
+    <div class="card-header">Your timeline</div>
+
+    <tr th:each="post : ${posts}">
+        <td class="card-text col-sm-1" th:text="${post.content}"></td> <td class="card-text col-sm-1"><small class="text-muted" th:text="${post.datetime}"/></td> <td class="card-text col-sm-1"><a role="button" class="btn btn-dark" th:href="@{'/deletepost/'+${post.id}}">Delete Post</a></td>
+    </tr>
+</table>
+
+</body>
+</html>

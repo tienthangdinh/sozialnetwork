@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hompageee</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">sozialnetwork</a>
+
+    <div id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/myprofile">My Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/members">Our Community</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/friends">My Friends</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post">
+            <button class="btn btn-outline-secondary my-2 my-sm-0" value="Logout" type="submit">Logout</button>
+        </form>
+    </div>
+</nav>
+
+
+<br/><br/>
+<h2>Hello <text th:text="${name}"/> </h2> &nbsp; &nbsp;
+
+<div>
+    <form method="post" th:action="@{/}" class="input-group mb-3">
+        <input class="form-control form-control-lg" type="text" name="content" placeholder="What's on your mind?">
+        <div class="input-group-append"><button type="submit" class="btn btn-outline-secondary">Post</button></div>
+    </form>
+</div>
+<hr class="my-4">
+
+<div class="card">
+    <div class="card-header">
+        Timeline
+    </div>
+    <div class="card-body" th:each="post : ${posts}">
+        <h6 class="card-title" th:text="${post.username}"/>
+        <p class="card-text" ><text th:text="${post.content}"/></p>
+        <p class="card-text"><small class="text-muted" th:text="${post.datetime}"/></p>
+    </div>
+</div>
+
+</body>
+</html>
